@@ -1,0 +1,23 @@
+services:
+  app_proxy:
+    environment:
+      APP_HOST: comeover_relay_1
+      APP_PORT: 8787
+      # Companion apps cannot send Umbrel auth cookies. Keep the dashboard
+      # protected, but let the relay's REST and Socket.IO paths through.
+      PROXY_AUTH_WHITELIST: "/api/*,/socket.io*,/j/*,/healthz"
+
+  relay:
+    image: ghcr.io/tanmaym/comeover-relay:0.1.0
+    restart: on-failure
+    init: true
+    user: "1000:1000"
+    ports:
+      # Direct companion-client endpoint. Deliberately outside app_proxy:
+      # Socket.IO clients do not carry Umbrel's login session.
+      - "8787:8787"
+    environment:
+      PORT: "8787"
+      HOST: "0.0.0.0"
+      COMEOVER_VERSION: "0.1.0"
+      COMEOVER_DIRECT_PORT: "8787"

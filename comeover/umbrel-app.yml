@@ -1,0 +1,52 @@
+manifestVersion: 1
+id: comeover
+category: networking
+name: ComeOver
+version: "0.1.0"
+tagline: Invite someone over and watch them arrive
+description: >-
+  ComeOver is an account-free live arrival relay for the last few minutes of a
+  visit. One person starts a room, shares a short code or link, and both sides
+  watch a live map with distance, ETA and a countdown until they are at the door.
+
+
+  This package installs the relay. Open it from the Umbrel dashboard to see
+  whether the relay is healthy and to copy the address your phones and TVs
+  should use in **Settings → Relay**.
+
+
+  **Before you start**
+
+
+  - The direct relay port is published on `8787` so the Android/iOS apps and TVs
+    can use REST and Socket.IO without the Umbrel login. Keep Umbrel on your
+    trusted LAN or Tailscale tailnet; do not expose that port to the public
+    internet.
+
+  - The dashboard on port `8788` stays behind Umbrel auth. The `/api/*`, `/socket.io*`,
+    `/j/*` and `/healthz` paths are whitelisted so companion clients can connect.
+
+  - Rooms are in memory only. Restarting the app or the Umbrel drops active
+    rooms. No accounts, analytics or cloud database are involved.
+
+
+  **Connect a guest**
+
+
+  A guest needs a network path to this Umbrel. The simplest option is to share
+  the Umbrel node with them from the Tailscale admin console. They accept the
+  share, install the ComeOver client, and enter the relay address shown on the
+  dashboard. Guests on the same LAN can use the Umbrel LAN IP instead.
+releaseNotes: ""
+developer: tanmaym
+website: https://github.com/tanmaym/comeover
+dependencies: []
+repo: https://github.com/tanmaym/comeover
+support: https://github.com/tanmaym/comeover/issues
+submitter: tanmaym
+port: 8788
+gallery: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDI0IiBoZWlnaHQ9IjEwMjQiIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiPgogIDxkZWZzPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJiZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMzMzIwM0YiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIwLjU1IiBzdG9wLWNvbG9yPSIjMUMxMjI4Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzBFMEExNiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0iZ2xvdyIgY3g9IjAuNSIgY3k9IjAuNDIiIHI9IjAuNSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzdDNUNGRiIgc3RvcC1vcGFjaXR5PSIwLjU1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMC42IiBzdG9wLWNvbG9yPSIjN0M1Q0ZGIiBzdG9wLW9wYWNpdHk9IjAuMTIiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjN0M1Q0ZGIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InBpbiIgeDE9IjAuMiIgeTE9IjAiIHgyPSIwLjgiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjQzlGQkZGIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMC41NSIgc3RvcC1jb2xvcj0iIzlCRjZGRiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM2M0Q4RTgiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJzb2Z0IiB4PSItNDAlIiB5PSItNDAlIiB3aWR0aD0iMTgwJSIgaGVpZ2h0PSIxODAlIj4KICAgICAgPGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMTgiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KCiAgPHJlY3Qgd2lkdGg9IjEwMjQiIGhlaWdodD0iMTAyNCIgZmlsbD0idXJsKCNiZykiLz4KICA8Y2lyY2xlIGN4PSI1MTIiIGN5PSI0MzAiIHI9IjM2MCIgZmlsbD0idXJsKCNnbG93KSIvPgoKICA8IS0tIHRyYXZlbGxlZCBwYXRoIC0tPgogIDxwYXRoIGQ9Ik0yMzYgNzkyIEMzMDAgNzAwIDM1MiA2NDAgNDMwIDU5NiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjQ0RCREZGIgogICAgICAgIHN0cm9rZS1vcGFjaXR5PSIwLjU1IiBzdHJva2Utd2lkdGg9IjMwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1kYXNoYXJyYXk9IjQgNjIiLz4KICA8Y2lyY2xlIGN4PSIyMjIiIGN5PSI4MDYiIHI9IjI2IiBmaWxsPSIjQ0RCREZGIi8+CiAgPGNpcmNsZSBjeD0iMjIyIiBjeT0iODA2IiByPSIxMSIgZmlsbD0iIzFDMTIyOCIvPgoKICA8IS0tIHBpbiBzaGFkb3cgLS0+CiAgPGVsbGlwc2UgY3g9IjU0MCIgY3k9Ijc3MCIgcng9IjE2OCIgcnk9IjM0IiBmaWxsPSIjMDAwMDAwIiBvcGFjaXR5PSIwLjM1IiBmaWx0ZXI9InVybCgjc29mdCkiLz4KCiAgPCEtLSBwaW4gYm9keSAtLT4KICA8cGF0aCBkPSJNNTQ4IDIxNGMtMTIyIDAtMjIwIDk2LTIyMCAyMTYgMCAxNTggMjIwIDM1NiAyMjAgMzU2czIyMC0xOTggMjIwLTM1NmMwLTEyMC05OC0yMTYtMjIwLTIxNnoiCiAgICAgICAgZmlsbD0idXJsKCNwaW4pIi8+CiAgPCEtLSBnbGFzcyBoaWdobGlnaHQgLS0+CiAgPHBhdGggZD0iTTU0OCAyNTBjLTk2IDAtMTc2IDc1LTE4MyAxNzAgNDAtNTggMTA4LTk2IDE4My05NiA1MiAwIDEwMSAxOCAxNDAgNDktMTgtNzAtNzktMTIzLTE0MC0xMjN6IgogICAgICAgIGZpbGw9IiNGRkZGRkYiIG9wYWNpdHk9IjAuMzUiLz4KICA8IS0tIGlubmVyIGhvbGUgLS0+CiAgPGNpcmNsZSBjeD0iNTQ4IiBjeT0iNDE0IiByPSI4MiIgZmlsbD0iIzIyMTUzMSIvPgogIDxjaXJjbGUgY3g9IjU0OCIgY3k9IjQxNCIgcj0iMzAiIGZpbGw9IiM5QkY2RkYiIG9wYWNpdHk9IjAuOSIvPgoKICA8IS0tIHR3byBwZW9wbGUgbWVldGluZyAtLT4KICA8Y2lyY2xlIGN4PSI4NzAiIGN5PSIzMDAiIHI9IjU0IiBmaWxsPSIjRkZCNEEyIi8+CiAgPGNpcmNsZSBjeD0iODcwIiBjeT0iMzAwIiByPSIyNCIgZmlsbD0iIzIyMTUzMSIvPgogIDxjaXJjbGUgY3g9Ijc5MCIgY3k9IjM4MiIgcj0iMzQiIGZpbGw9IiNDREJERkYiLz4KICA8Y2lyY2xlIGN4PSI3OTAiIGN5PSIzODIiIHI9IjE0IiBmaWxsPSIjMjIxNTMxIi8+Cjwvc3ZnPgo="
