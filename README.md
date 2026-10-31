@@ -34,7 +34,7 @@ pushes to GitHub Container Registry.
    image: ghcr.io/<owner>/comeover-relay:0.1.0@sha256:<digest>
    ```
 
-5. If your GitHub owner is not `tanmaym`, update the image name in
+5. If your GitHub owner is not `github-user0008`, update the image name in
    `comeover/docker-compose.yml`. Keep the tag in step with `version:` in `umbrel-app.yml`.
 
 To build and push manually instead:
@@ -54,7 +54,7 @@ in the compose file:
 
 ```bash
 cd comeover/server
-docker build -t ghcr.io/tanmaym/comeover-relay:0.1.0 .
+docker build -t ghcr.io/github-user0008/comeover-relay:0.1.0 .
 ```
 
 Compose will use the local image when the tag already exists. This is fine for a private box, but

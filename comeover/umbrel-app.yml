@@ -38,12 +38,12 @@ description: >-
   share, install the ComeOver client, and enter the relay address shown on the
   dashboard. Guests on the same LAN can use the Umbrel LAN IP instead.
 releaseNotes: ""
-developer: tanmaym
-website: https://github.com/tanmaym/comeover
+developer: github-user0008
+website: https://github.com/github-user0008/comeover
 dependencies: []
-repo: https://github.com/tanmaym/comeover
-support: https://github.com/tanmaym/comeover/issues
-submitter: tanmaym
+repo: https://github.com/github-user0008/comeover
+support: https://github.com/github-user0008/comeover/issues
+submitter: github-user0008
 port: 8788
 gallery: []
 path: ""
