@@ -15,35 +15,26 @@ description: >-
   home screen and join with an invite code — no install from an app store
   needed. The dashboard shows the address phones and TVs should use.
 
-releaseNotes: |-
-  - The relay now serves the complete ComeOver web app (live map, countdown,
-    join flow, demo) from the same address as the API.
-  - Android hosts get a notification when someone's position goes stale.
 
+  The direct relay port is published on `8787` so the Android/iOS apps and TVs
+  can use REST and Socket.IO without the Umbrel login. Keep Umbrel on your
+  trusted LAN or Tailscale tailnet; do not expose that port to the public
+  internet.
 
-  **Before you start**
+  The dashboard on port `8788` stays behind Umbrel auth. The `/api/*`, `/socket.io*`,
+  `/j/*` and `/healthz` paths are whitelisted so companion clients can connect.
 
-
-  - The direct relay port is published on `8787` so the Android/iOS apps and TVs
-    can use REST and Socket.IO without the Umbrel login. Keep Umbrel on your
-    trusted LAN or Tailscale tailnet; do not expose that port to the public
-    internet.
-
-  - The dashboard on port `8788` stays behind Umbrel auth. The `/api/*`, `/socket.io*`,
-    `/j/*` and `/healthz` paths are whitelisted so companion clients can connect.
-
-  - Rooms are in memory only. Restarting the app or the Umbrel drops active
-    rooms. No accounts, analytics or cloud database are involved.
-
-
-  **Connect a guest**
-
+  Rooms are in memory only. Restarting the app or the Umbrel drops active
+  rooms. No accounts, analytics or cloud database are involved.
 
   A guest needs a network path to this Umbrel. The simplest option is to share
   the Umbrel node with them from the Tailscale admin console. They accept the
   share, install the ComeOver client, and enter the relay address shown on the
   dashboard. Guests on the same LAN can use the Umbrel LAN IP instead.
-releaseNotes: ""
+releaseNotes: |-
+  - The relay now serves the complete ComeOver web app (live map, countdown,
+    join flow, demo) from the same address as the API.
+  - Android hosts get a notification when someone's position goes stale.
 developer: github-user0008
 website: https://github.com/github-user0008/comeover
 dependencies: []
