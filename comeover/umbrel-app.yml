@@ -2,7 +2,7 @@ manifestVersion: 1
 id: comeover
 category: networking
 name: ComeOver
-version: "0.1.0"
+version: "0.2.0"
 tagline: Invite someone over and watch them arrive
 description: >-
   ComeOver is an account-free live arrival relay for the last few minutes of a
@@ -10,9 +10,15 @@ description: >-
   watch a live map with distance, ETA and a countdown until they are at the door.
 
 
-  This package installs the relay. Open it from the Umbrel dashboard to see
-  whether the relay is healthy and to copy the address your phones and TVs
-  should use in **Settings → Relay**.
+  This package installs the relay **and serves the ComeOver web app from the
+  same origin**: open the relay address in any phone browser, add it to the
+  home screen and join with an invite code — no install from an app store
+  needed. The dashboard shows the address phones and TVs should use.
+
+releaseNotes: |-
+  - The relay now serves the complete ComeOver web app (live map, countdown,
+    join flow, demo) from the same address as the API.
+  - Android hosts get a notification when someone's position goes stale.
 
 
   **Before you start**

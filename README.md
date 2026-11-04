@@ -21,8 +21,10 @@ repository has a public asset URL. `icon.svg` is the source if you want to host 
 ## 1. Publish the relay image
 
 Umbrel app packages must pull a prebuilt image; they do not build from source during install. The
-included workflow at `.github/workflows/relay-image.yml` builds `linux/amd64` and `linux/arm64` and
-pushes to GitHub Container Registry.
+included workflow at `.github/workflows/relay-image.yml` builds `linux/amd64` and `linux/arm64`,
+builds the Flutter web client, bundles it into the image and pushes to GitHub Container Registry.
+The relay serves that web app at its own origin, so guests can install the web app straight from
+the relay address (no separate hosting, no CORS).
 
 1. Push this repository to GitHub.
 2. Run **Actions → Relay image → Run workflow** (or push a `v0.1.0` tag).
@@ -31,20 +33,24 @@ pushes to GitHub Container Registry.
 4. Copy the digest printed by the workflow and pin it in `comeover/docker-compose.yml`:
 
    ```yaml
-   image: ghcr.io/<owner>/comeover-relay:0.1.0@sha256:<digest>
+   image: ghcr.io/<owner>/comeover-relay:0.2.0@sha256:<digest>
    ```
 
 5. If your GitHub owner is not `github-user0008`, update the image name in
    `comeover/docker-compose.yml`. Keep the tag in step with `version:` in `umbrel-app.yml`.
 
-To build and push manually instead:
+To build and push manually instead, first bundle the web client (or skip it — the image still
+builds with just the placeholder and serves only the API/dashboard):
 
 ```bash
-cd server
+cd app
+flutter pub get && flutter build web --release
+rm -f ../server/web-dist/.gitkeep && cp -r build/web/. ../server/web-dist/
+cd ../server
 docker buildx build \
   --platform linux/amd64,linux/arm64 \
-  --tag ghcr.io/<owner>/comeover-relay:0.1.0 \
-  --push .
+  --tag ghcr.io/<owner>/comeover-relay:0.2.0 \
+  --push ..
 ```
 
 ### Offline / local-image alternative
@@ -54,7 +60,7 @@ in the compose file:
 
 ```bash
 cd comeover/server
-docker build -t ghcr.io/github-user0008/comeover-relay:0.1.0 .
+docker build -t ghcr.io/github-user0008/comeover-relay:0.2.0 .
 ```
 
 Compose will use the local image when the tag already exists. This is fine for a private box, but
